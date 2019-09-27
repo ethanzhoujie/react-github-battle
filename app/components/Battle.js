@@ -30,12 +30,12 @@ class PlayerInput extends React.Component {
     constructor(props) {
         super(props)
 
-        this.setState = {
+        this.state = {
             username: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(bind)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleSubmit(event) {
@@ -84,11 +84,48 @@ PlayerInput.propTypes = {
 }
 
 
-export default class Battle extends React.Component {    
+export default class Battle extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            playerOne: null,
+            playerTwo: null
+        }
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(id, player) {
+        this.setState({
+            [id]: player
+        })
+    }
+
     render() {
+        const { playerOne, playerTwo } = this.state
+
         return (
             <React.Fragment>
                 <Instruction />
+
+                <div className='row space-around'>
+                    {playerOne == null && (
+                        <PlayerInput
+                            label='Player One'
+                            onSubmit={(player) => this.handleSubmit('PlayerOne', player)}
+                        />
+                    )}
+                    {playerTwo == null && (
+                        <PlayerInput
+                            label='Player Two'
+                            onSubmit={
+                                (player) => {
+                                    this.handleSubmit('PlayerTwo', player)
+                                }}
+                        />
+                    )}
+                </div>
             </React.Fragment>
         )
     }
