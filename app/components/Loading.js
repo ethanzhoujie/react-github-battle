@@ -31,6 +31,10 @@ export default class Loading extends React.Component {
         }, speed);
     }
 
+    componentWillUnmount() {
+        window.clearInterval(this.interval)
+    }
+
     render() {
         return (
             <p style={styles.content}>
