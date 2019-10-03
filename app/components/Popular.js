@@ -104,9 +104,7 @@ export default class Popular extends React.Component {
         })
 
         if (!this.state.repos[selectedLanguage]) {
-            debugger
             fetchPopularRepos(selectedLanguage).then((data) => {
-                debugger
                 this.setState(({repos}) => ({
                     repos: {
                         ...repos,

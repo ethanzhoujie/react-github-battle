@@ -3,7 +3,6 @@ import React from 'react'
 export default function withHover (Component, propName = 'hovering') {
     return class WithHover extends React.Component {
         constructor(props) {
-            debugger
             super(props)
 
             this.state = {
@@ -31,8 +30,6 @@ export default function withHover (Component, propName = 'hovering') {
                 [propName]: this.state.hovering,
                 ...this.props
             }
-
-            debugger
     
             return (
                 <div onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>

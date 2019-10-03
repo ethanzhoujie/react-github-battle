@@ -25,17 +25,14 @@ const styles = {
   }
 
 export default function Tooltip ({ text, children }) {
-    debugger
     return (
-
-
         <Hover>
-            {(hovering) => {
+            {(hovering) => (
                 <div style={styles.container}>
                     {hovering === true && <div style={styles.tooltip}>{text}</div>}
                     {children}
                 </div>
-            }}
+            )}
         </Hover>
     )
 }
